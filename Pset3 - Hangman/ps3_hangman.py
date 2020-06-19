@@ -50,10 +50,7 @@ def isWordGuessed(secretWord, lettersGuessed):
     returns: boolean, True if all the letters of secretWord are in lettersGuessed;
       False otherwise
     '''
-    for letter in secretWord:
-        if letter not in lettersGuessed:
-            return False
-    return True
+    return True if set(secretWord) - set(lettersGuessed) == set() else False
 
 def getGuessedWord(secretWord, lettersGuessed):
     '''
@@ -62,11 +59,7 @@ def getGuessedWord(secretWord, lettersGuessed):
     returns: string, comprised of letters and underscores that represents
       what letters in secretWord have been guessed so far.
     '''
-    secretWord = list(secretWord)
-    for index, letter in enumerate(secretWord):
-        if letter not in lettersGuessed:
-            secretWord[index] = '_'
-    return ' '.join(secretWord)
+    return ' '.join(list('_' if letter not in lettersGuessed else letter for letter in secretWord))
 
 
 def getAvailableLetters(lettersGuessed):
@@ -75,10 +68,8 @@ def getAvailableLetters(lettersGuessed):
     returns: string, comprised of letters that represents what letters have not
       yet been guessed.
     '''
-    alphabet = list('abcdefghijklmnopqrstuvwxyz')
-    for letter in lettersGuessed:
-        del alphabet[alphabet.index(letter)]
-    return ''.join(alphabet)
+    alphabet = 'abcdefghijklmnopqrstuvwxyz'
+    return ''.join([letter for letter in alphabet if letter not in set(lettersGuessed)])
 
 def hangman(secretWord):
     '''

@@ -75,12 +75,10 @@ def getWordScore(word, n):
     """
 
     score = 0
-    for letter in word:
-        score += SCRABBLE_LETTER_VALUES[letter]
+    for letter, frequency in getFrequencyDict(word).items():
+        score += SCRABBLE_LETTER_VALUES[letter] * frequency
     score *= len(word)
-    if len(word) == n:
-        score += 50
-    return score
+    return score + 50 if len(word) == n else score
 
 #
 # Problem #2: Make sure you understand how this function works and what it does!

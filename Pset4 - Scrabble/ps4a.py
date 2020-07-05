@@ -174,12 +174,23 @@ def isValidWord(word, hand, wordList):
     hand: dictionary (string -> int)
     wordList: list of lowercase strings
     """
-    # TO DO ... <-- Remove this comment when you code this function
+    # Initialization of local variables
+    hand = hand.copy()
+    wordList = set(wordList)
+    word_dict = getFrequencyDict(word)
 
+    # Check if word is subset of hand
+    for letter in word_dict:
+        # If a letter is not in hand, then it's frequency will negative
+        hand[letter] = hand.get(letter, 0) - word_dict[letter]
+    if min(hand.values()) < 0 or word not in wordList:
+        return False
+    return True
 
 #
 # Problem #4: Playing a hand
 #
+
 
 def calculateHandlen(hand):
     """

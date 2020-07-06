@@ -255,7 +255,8 @@ def playHand(hand, wordList, n):
                 # Update the hand
                 hand = updateHand(hand, user_word)
     # Game is over (user entered a '.' or ran out of letters), so tell user the total score
-    print("Goodbye! Total score: {} points.".format(score))
+    end_msg = ['Run out of letters.', 'Goodbye!']
+    print("{} Total score: {} points.".format(end_msg[any(hand.values())], score))
 
 #
 # Problem #5: Playing a game

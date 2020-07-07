@@ -176,7 +176,7 @@ def isValidWord(word, hand, wordList):
     """
     # Initialization of local variables
     hand = hand.copy()
-    wordList = set(wordList)
+    #wordList = set(wordList)
     word_dict = getFrequencyDict(word)
 
     # Check if word is subset of hand

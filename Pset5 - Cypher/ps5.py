@@ -283,3 +283,7 @@ print('Actual Output:', plaintext.get_message_text_encrypted())
 ciphertext = CiphertextMessage('jgnnq')
 print('Expected Output:', (24, 'hello'))
 print('Actual Output:', ciphertext.decrypt_message())
+
+# Problem 4: Decrypting a "funny" story.
+joke = CiphertextMessage(get_story_string())
+print(joke.decrypt_message())
